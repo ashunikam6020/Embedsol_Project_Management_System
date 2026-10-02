@@ -1,0 +1,4 @@
+import { useEffect,useState } from 'react';
+import api,{errMsg} from '../api';
+import {Alert,Empty,PageHead,fmtDate} from '../components';
+export default function AuditLogs(){const [rows,setRows]=useState([]),[error,setError]=useState('');useEffect(()=>{api.get('/audit-logs').then(r=>setRows(r.data.data)).catch(e=>setError(errMsg(e)))},[]);return <><PageHead title="Audit Log" subtitle="Important system actions and accountability history."/><Alert>{error}</Alert><section className="panel">{rows.length===0?<Empty>No audit records yet.</Empty>:<div className="table-wrap"><table><thead><tr><th>Date</th><th>User</th><th>Action</th><th>Entity</th><th>Details</th></tr></thead><tbody>{rows.map(r=><tr key={r.id}><td>{new Date(r.created_at).toLocaleString('en-IN')}</td><td>{r.username||'System'}</td><td>{r.action}</td><td>{r.entity_type}{r.entity_id?` #${r.entity_id}`:''}</td><td>{r.details||'—'}</td></tr>)}</tbody></table></div>}</section></>}
