@@ -1,10 +1,42 @@
 import { useEffect, useState } from 'react';
 import api, { errMsg } from './api';
 
-export const STATUS = { NOT_STARTED: 'Not Started', IN_PROGRESS: 'In Progress', ON_HOLD: 'On Hold', COMPLETED: 'Completed' };
-export const PRIORITY = { LOW: 'Low', MEDIUM: 'Medium', HIGH: 'High', CRITICAL: 'Critical' };
-export const PROJECT_STATUS = { PLANNING: 'Planning', ACTIVE: 'Active', ON_HOLD: 'On Hold', COMPLETED: 'Completed', CANCELLED: 'Cancelled' };
-export const LOG_STATUS = { WORKING: 'Working', COMPLETED: 'Completed', BLOCKED: 'Blocked' };
+export const STATUS = {
+  NOT_STARTED: 'Not Started',
+  IN_PROGRESS: 'In Progress',
+  ON_HOLD: 'On Hold',
+  COMPLETED: 'Completed'
+};
+
+// New Task workflow status
+export const TASK_WORKFLOW_STATUS = {
+  PLANNING: 'Planning',
+  ACTIVE: 'Active',
+  ON_HOLD: 'On Hold',
+  COMPLETED: 'Completed',
+  CANCELLED: 'Cancelled'
+};
+
+export const PRIORITY = {
+  LOW: 'Low',
+  MEDIUM: 'Medium',
+  HIGH: 'High',
+  CRITICAL: 'Critical'
+};
+
+export const PROJECT_STATUS = {
+  PLANNING: 'Planning',
+  ACTIVE: 'Active',
+  ON_HOLD: 'On Hold',
+  COMPLETED: 'Completed',
+  CANCELLED: 'Cancelled'
+};
+
+export const LOG_STATUS = {
+  WORKING: 'Working',
+  COMPLETED: 'Completed',
+  BLOCKED: 'Blocked'
+};
 
 export const fmtDate = (d) => {
   if (!d) return '—';
